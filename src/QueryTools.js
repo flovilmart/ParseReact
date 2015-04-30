@@ -186,6 +186,9 @@ function matchesKeyConstraints(object, key, constraints) {
   var compareTo;
   if (constraints.__type) {
     if (constraints.__type === 'Pointer') {
+      if (typeof object[key] === 'undefined') {
+        return false;
+      }
       return (
         constraints.className === object[key].className &&
         constraints.objectId === object[key].objectId
